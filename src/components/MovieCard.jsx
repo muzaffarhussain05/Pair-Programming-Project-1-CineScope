@@ -11,7 +11,7 @@ const MovieCard = ({ movie }) => {
                     transform hover:scale-105 transition-transform duration-300 ease-in-out
                     cursor-pointer">
       <img
-        src={movie.poster_path}
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title || movie.name}
         className="w-full h-96 object-cover object-center"
       />

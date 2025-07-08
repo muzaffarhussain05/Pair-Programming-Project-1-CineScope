@@ -84,11 +84,11 @@ const MovieList = () => {
       <h2 className="text-4xl font-bold text-white mb-8 text-center md:text-left">
         Trending This Week
       </h2>
-      {trendingResponse.length === 0 ? (
+      {trendingMovies.length === 0 ? (
         <p className="text-gray-400 text-center text-lg mb-12">No trending movies found.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mb-16">
-          {trendingResponse.map((movie) => (
+          {trendingMovies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
@@ -98,11 +98,11 @@ const MovieList = () => {
       <h2 className="text-4xl font-bold text-white mb-8 text-center md:text-left">
         Popular Movies
       </h2>
-      {popularResponse.length === 0 ? (
+      {popularMovies.length === 0 ? (
         <p className="text-gray-400 text-center text-lg">No popular movies found.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-          {popularResponse.map((movie) => (
+          {popularMovies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
