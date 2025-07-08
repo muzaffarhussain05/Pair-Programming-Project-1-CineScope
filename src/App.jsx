@@ -1,12 +1,14 @@
 import './App.css'
+import MovieContextProvider from './context/MovieContextProvider';
 
 function App() {
   
 
   return (
-    <>
-    <h1>App</h1>
-    </>
+    <MovieContextProvider>
+    
+    
+    </MovieContextProvider>
   )
 }
 
