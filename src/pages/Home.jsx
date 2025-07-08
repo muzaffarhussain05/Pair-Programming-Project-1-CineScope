@@ -1,9 +1,9 @@
 import React from 'react'
 import MovieList from "../components/MovieList"
-const Home = () => {
+const Home = ({ searchResults }) => {
   return (
     <div className=''>
-  <MovieList/>
+  <MovieList movies={searchResults}/>
   </div>
   )
 }
