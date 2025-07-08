@@ -1,22 +1,21 @@
 import React from 'react'
+import { Link,useNavigate } from 'react-router-dom';
 
+const MovieCard = ({ movie }) => {
+ const navigate = useNavigate();
 
-const MovieCard = ({ movie,name }) => {
-  // const posterUrl = movie.poster_path
-  //   ? `${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}` // Still uses TMDB_IMAGE_BASE_URL
-  //   : 'https://via.placeholder.com/500x750?text=No+Image';
-
- let posterUrl="https://image.tmdb.org/t/p/w500";
- 
-
+  const handleClick = () => {
+    navigate(`/MovieDetails/${movie.id}`);
+  };
   return (
-    <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden
+   
+    <div onClick={handleClick} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden
                     transform hover:scale-105 transition-transform duration-300 ease-in-out
                     cursor-pointer">
       <img
-        src={`${posterUrl}${movie.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title || movie.name}
-        className="w-full   h-92 object-cover  object-center"
+        className="w-full h-96 object-cover object-center"
       />
       <div className="p-4">
         <h3 className="text-white text-lg font-semibold truncate">
@@ -29,6 +28,7 @@ const MovieCard = ({ movie,name }) => {
         )}
       </div>
     </div>
+      
   );
 };
 

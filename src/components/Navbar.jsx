@@ -1,38 +1,16 @@
-<<<<<<< HEAD
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaBookmark, FaBars, FaTimes, FaSearch } from "react-icons/fa";
-
-export default function Navbar() {
-  const [searchValue, setSearchValue] = useState("");
-  const navigate = useNavigate();
-=======
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaBookmark, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 
 const TMDB_API_KEY='a4574e2a6343d5ea405089950be10143';
 export default function Navbar({ setSearchResults}) {
->>>>>>> e4f82cb (search bar logic)
   const [isOpen, setIsOpen] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
  const [searchTerm, setSearchTerm] = useState("");
   const closeSidebar = () => setIsOpen(false);
 
-<<<<<<< HEAD
-  const handleSearchClick = () => setShowOverlay((prev) => !prev);
-  const handleSearchKey = (e) => {
-    if (e.key === "Enter") {
-      const trimmed = searchValue.trim();
-      if (trimmed) {
-        navigate(`/search/${encodeURIComponent(trimmed)}`);
-        setShowOverlay(false);
-        setSearchValue("");
-      }
-    }
-  };
-=======
  const handleSearchClick = () => setShowOverlay((prev) => !prev);
+
   useEffect(() => {
     if (!searchTerm) {
       setSearchResults([]);
@@ -60,47 +38,32 @@ export default function Navbar({ setSearchResults}) {
   }, [searchTerm]);
 
 
->>>>>>> e4f82cb (search bar logic)
 
   return (
     <>
       <nav className="bg-[#1d0f0f] top-0 text-white fixed w-full z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
+            
             <div className="flex items-center space-x-2">
               <img src="" alt="logo" className="w-6 h-6" />
               <span className="text-lg font-bold">CineScope</span>
             </div>
 
+           
             <div className="hidden md:flex space-x-6 text-sm">
-<<<<<<< HEAD
-              <Link to="/" className="hover:text-gray-300">
-                Home
-              </Link>
-              <Link to="/Movies" className="hover:text-gray-300">
-                Movies
-              </Link>
-              <Link to="/TvShow" className="hover:text-gray-300">
-                TV Shows
-              </Link>
-              <Link to="/People" className="hover:text-gray-300">
-                People
-              </Link>
-=======
               <Link to="/" className="hover:text-gray-300">Home</Link>
-              <Link to="/MovieDetails" className="hover:text-gray-300">Movie details</Link>
-              <Link to="/TvShow" className="hover:text-gray-300">watchlist</Link>
+              <Link to="/MovieDetails" className="hover:text-gray-300">Movies</Link>
+              <Link to="/TvShow" className="hover:text-gray-300">Tv Shows</Link>
               <Link to="/People" className="hover:text-gray-300">People</Link>
->>>>>>> e4f82cb (search bar logic)
             </div>
 
+           
             <div className="flex flex-row items-center space-x-4">
+              
               <div className="relative z-10">
                 <div className="p-4 bg-[#1d0f0f] z-20 flex flex-row">
                   <input
-                    value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
-                    onKeyDown={handleSearchKey}
                     onClick={handleSearchClick}
                     type="text"
                     placeholder="Search"
@@ -120,6 +83,7 @@ export default function Navbar({ setSearchResults}) {
               />
             </div>
 
+           
             <div className="md:hidden">
               <button onClick={() => setIsOpen(true)} className="text-2xl">
                 <FaBars />
@@ -128,26 +92,11 @@ export default function Navbar({ setSearchResults}) {
           </div>
         </div>
       </nav>
-<<<<<<< HEAD
-
-=======
 <hr className="h-0.5 bg-gray-500 border-none " />
     
->>>>>>> e4f82cb (search bar logic)
       {showOverlay && (
         <div className="inset-0 flex-row flex justify-center items-start pt-0 transition-all duration-300">
           <div className="p-4  z-20 flex flex-row">
-<<<<<<< HEAD
-            <input
-              type="text"
-              placeholder="Search"
-              className="bg-[#441f1f] text-white max-md:w-[500px] max-sm:w-[300px] w-[800px] text-sm rounded-md pl-8 pr-4  py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-            <span className="absolute ml-2 mt-4 text-sm text-gray-400">
-              <FaSearch className="w-4 h-4" />
-            </span>
-          </div>
-=======
                   <input
                    value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -159,7 +108,6 @@ export default function Navbar({ setSearchResults}) {
                     <FaSearch className="w-4 h-4" />
                   </span>
                 </div>
->>>>>>> e4f82cb (search bar logic)
         </div>
       )}
 
@@ -182,30 +130,10 @@ export default function Navbar({ setSearchResults}) {
         </div>
 
         <div className="flex flex-col space-y-4 p-4 text-sm">
-          <Link to="/" className="hover:text-gray-300" onClick={closeSidebar}>
-            Home
-          </Link>
-          <Link
-            to="/Movies"
-            className="hover:text-gray-300"
-            onClick={closeSidebar}
-          >
-            Movies
-          </Link>
-          <Link
-            to="/TvShow"
-            className="hover:text-gray-300"
-            onClick={closeSidebar}
-          >
-            TV Shows
-          </Link>
-          <Link
-            to="/People"
-            className="hover:text-gray-300"
-            onClick={closeSidebar}
-          >
-            People
-          </Link>
+          <Link to="/" className="hover:text-gray-300" onClick={closeSidebar}>Home</Link>
+          <Link to="/Movies" className="hover:text-gray-300" onClick={closeSidebar}>Movies</Link>
+          <Link to="/TvShow" className="hover:text-gray-300" onClick={closeSidebar}>TV Shows</Link>
+          <Link to="/People" className="hover:text-gray-300" onClick={closeSidebar}>People</Link>
           <img
             src=""
             alt="profile"
