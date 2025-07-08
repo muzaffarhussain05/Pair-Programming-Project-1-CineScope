@@ -7,7 +7,8 @@ const TMDB_API_KEY = "a4574e2a6343d5ea405089950be10143";
 const SearchBar = () => {
   const { name } = useParams(); // 👈 get the :name param
   const [movies, setMovies] = useState([]);
-
+  const [loading,setLoading]=useState(null);
+  const [error,setError]=useState(null);
   useEffect(() => {
     const fetchSearchResults = async () => {
       setLoading(true);
@@ -27,7 +28,7 @@ const SearchBar = () => {
         setError(err.message || "Something went wrong.");
       } finally {
         setLoading(false);
-      }
+      } 
     };
 
     fetchSearchResults();
