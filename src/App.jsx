@@ -1,10 +1,8 @@
-
-
 import React, { useState,useContext } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MovieContextProvider from './context/MovieContextProvider';
-// import MovieContext from "./context/MovieContext"; 
+
 
 
 import Navbar from "./components/Navbar";
@@ -17,23 +15,21 @@ import MyList from "./pages/Mylist";
 import NotFound from "./pages/NotFound";
 
 function App() {
- const [darkMode, setDarkMode] = useState(false);
- const toggleDarkMode = () => setDarkMode((prev) => !prev); 
+ 
  
 
 
   return (
     <MovieContextProvider>
       <BrowserRouter>
-        <div  className={`md:pt-20 pt-10 px-4 bg-[#1b0b0b]  ${darkMode? "bg-[#f2ecec] text-[#1b0b0b]" : "bg-[#1b0b0b] text-white"}  `}>
-          <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+        <div className="md:pt-20 pt-10 px-4 bg-[#1b0b0b]">
           <Routes>
-            <Route path="/" element={<><Home /></>} />
-            <Route path="/MovieDetails/:id" element={<><Moviedetails  /></>} />
-            <Route path="/mylist" element={<><MyList /></>} />
-            <Route path="/search/:name" element={<><SearchBar /></>} />
-            <Route path="/search/genre" element={<><GenreFilter /></>} />
-            <Route path="/search/year" element={<><YearFilter /></>} />
+            <Route path="/" element={<><Navbar /><Home /></>} />
+            <Route path="/MovieDetails/:id" element={<><Navbar /><Moviedetails /></>} />
+            <Route path="/mylist" element={<><Navbar /><MyList /></>} />
+            <Route path="/search/:name" element={<><Navbar /><SearchBar /></>} />
+            <Route path="/search/genre" element={<><Navbar /><GenreFilter /></>} />
+            <Route path="/search/year" element={<><Navbar /><YearFilter /></>} />
 
             {/* 🔥 No Navbar on 404 */}
             <Route path="*" element={<NotFound />} />
