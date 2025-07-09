@@ -7,7 +7,7 @@ const TMDB_BASE_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB
 
 
 
-const MovieList = ({movies}) => {
+const MovieList = ({movies=[]}) => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
   const [topRatedMovies,settopRatedMovies]= useState([]);
@@ -81,10 +81,10 @@ const MovieList = ({movies}) => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-8">
-        <p className="text-red-500 text-xl font-bold mb-4">Error fetching data:</p>
-        <p className="text-red-300 text-lg text-center">{error}</p>
-        <p className="text-gray-400 mt-4">Please check your API key and internet connection.</p>
+      <div className="min-h-screen bg-[#1d0f0f] flex flex-col items-center justify-center p-8">
+        <p className="text-red-500 text-xl font-bold mb-4">Something Wrong!</p>
+        {/* <p className="text-red-300 text-lg text-center">{error}</p> */}
+        <p className="text-gray-400 mt-4">Please check your internet connection.</p>
       </div>
     );
   }

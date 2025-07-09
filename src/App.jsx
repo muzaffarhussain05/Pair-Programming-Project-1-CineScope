@@ -1,52 +1,43 @@
-// import './App.css'
-// import Navbar from './components/Navbar';
-// import MovieContextProvider from './context/MovieContextProvider';
-
-// function App() {
-  
-
-//   return (
-//     <MovieContextProvider>
-//     <Navbar/>
-    
-//     </MovieContextProvider>
-//   )
-// }
-
-// export default App
-
-// working in my system
-import React from "react";
+import React, { useState,useContext } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import MovieContextProvider from './context/MovieContextProvider';
+
+
+
 import Navbar from "./components/Navbar";
 import Home from "./Pages/Home";
-import WatchList from "./Pages/Watchlist";
 import Moviedetails from "./Pages/MovieDetails";
 import Favourite from "./pages/Favorites";
 import SearchBar from "./components/SearchBar";
 import GenreFilter from "./components/GenreFilter";
 import YearFilter from "./components/YearFilter";
+import MyList from "./pages/Mylist";
+import NotFound from "./pages/NotFound";
 
 function App() {
-   const [searchResults, setSearchResults] = useState([]);
+ 
+ 
+
 
   return (
-    
+    <MovieContextProvider>
       <BrowserRouter>
-       <div className="pt-20 px-4 bg-[#1d0f0f] ">
-        <Navbar />
-       
+        <div>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Watchlist" element={<WatchList />} />
-            <Route path="/MovieDetails/:id" element={<Moviedetails />} />
-              <Route path="/Favorites" element={<Favourite />} />
+            <Route path="/" element={<><Navbar /><Home /></>} />
+            <Route path="/MovieDetails/:id" element={<><Navbar /><Moviedetails /></>} />
+            <Route path="/mylist" element={<><Navbar /><MyList /></>} />
+            <Route path="/search/:name" element={<><Navbar /><SearchBar /></>} />
+            <Route path="/search/genre" element={<><Navbar /><GenreFilter /></>} />
+            <Route path="/search/year" element={<><Navbar /><YearFilter /></>} />
+
+            {/* 🔥 No Navbar on 404 */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </BrowserRouter>
-   
+    </MovieContextProvider>
   );
 }
 
