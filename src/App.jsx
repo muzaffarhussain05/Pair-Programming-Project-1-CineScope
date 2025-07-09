@@ -8,7 +8,6 @@ import MovieContextProvider from './context/MovieContextProvider';
 import Navbar from "./components/Navbar";
 import Home from "./Pages/Home";
 import Moviedetails from "./Pages/MovieDetails";
-import Favourite from "./pages/Favorites";
 import SearchBar from "./components/SearchBar";
 import GenreFilter from "./components/GenreFilter";
 import YearFilter from "./components/YearFilter";
@@ -23,7 +22,7 @@ function App() {
   return (
     <MovieContextProvider>
       <BrowserRouter>
-        <div>
+        <div className="md:pt-20 pt-10 px-4 bg-[#1b0b0b]">
           <Routes>
             <Route path="/" element={<><Navbar /><Home /></>} />
             <Route path="/MovieDetails/:id" element={<><Navbar /><Moviedetails /></>} />

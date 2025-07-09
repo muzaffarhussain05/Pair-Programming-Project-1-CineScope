@@ -39,7 +39,7 @@ export default function Navbar({ setSearchResults }) {
     <>
       <nav
         className={`${
-          darkMode ? "bg-black text-white" : "bg-[#1d0f0f] text-white"
+          darkMode ? "bg-black text-white" : "bg-[#1b0b0b] text-white"
         } fixed top-0 w-full z-50 shadow-md`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,7 +75,7 @@ export default function Navbar({ setSearchResults }) {
             <div className="flex flex-row items-center space-x-4">
               {/* Search Input */}
               <div className="relative z-10">
-                <div className="p-4 bg-[#1d0f0f] z-20 flex flex-row">
+                <div className="p-4 bg-[#1b0b0b] z-20 flex flex-row">
                   <input
                     value={searchValue}
                     onClick={handleSearchClick}
