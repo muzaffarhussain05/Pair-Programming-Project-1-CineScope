@@ -66,9 +66,9 @@ export default function Navbar({ setSearchResults }) {
             {/* Nav Links */}
             <div className="hidden md:flex space-x-6 text-sm">
               <Link to="/" className="hover:text-gray-300">Home</Link>
-              <Link to="/MovieDetails" className="hover:text-gray-300">Movies</Link>
-              <Link to="/TvShow" className="hover:text-gray-300">Tv Shows</Link>
-              <Link to="/People" className="hover:text-gray-300">People</Link>
+              <Link to="/movie" className="hover:text-gray-300">Movies</Link>
+              <Link to="/tvshow" className="hover:text-gray-300">Tv Shows</Link>
+              <Link to="/person/popular" className="hover:text-gray-300">People</Link>
             </div>
 
             {/* Right Controls */}
@@ -169,13 +169,13 @@ export default function Navbar({ setSearchResults }) {
           <Link to="/" className="hover:text-gray-300" onClick={closeSidebar}>
             Home
           </Link>
-          <Link to="/Movies" className="hover:text-gray-300" onClick={closeSidebar}>
+          <Link to="/movie" className="hover:text-gray-300" onClick={closeSidebar}>
             Movies
           </Link>
-          <Link to="/TvShow" className="hover:text-gray-300" onClick={closeSidebar}>
+          <Link to="/tvshow" className="hover:text-gray-300" onClick={closeSidebar}>
             TV Shows
           </Link>
-          <Link to="/People" className="hover:text-gray-300" onClick={closeSidebar}>
+          <Link to="/person/popular" className="hover:text-gray-300" onClick={closeSidebar}>
             People
           </Link>
           <img

@@ -117,7 +117,7 @@ if(movies.length >0){
       )}
 
      
-      <h2 className="text-4xl font-bold text-white mb-8 text-center md:text-left">
+      <h2 className="text-4xl font-bold text-white mb-8  text-center md:text-left">
         Popular Movies
       </h2>
       {popularMovies.length === 0 ? (
@@ -130,7 +130,7 @@ if(movies.length >0){
         </div>
       )}
       
-       <h2 className="text-4xl font-bold text-white mb-8 text-center md:text-left">
+       <h2 className="text-4xl font-bold text-white mb-8  mt-4 text-center md:text-left">
         Top Rated Movies
       </h2>
       {topRatedMovies.length === 0 ? (

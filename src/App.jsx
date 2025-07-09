@@ -13,6 +13,9 @@ import GenreFilter from "./components/GenreFilter";
 import YearFilter from "./components/YearFilter";
 import MyList from "./pages/Mylist";
 import NotFound from "./pages/NotFound";
+import TVShowList from "./components/TVShowList";
+import ShowDetails from "./pages/ShowDetails";
+import PeopleList from "./components/PeopleList";
 
 function App() {
  
@@ -30,6 +33,9 @@ function App() {
             <Route path="/search/:name" element={<><Navbar /><SearchBar /></>} />
             <Route path="/search/genre" element={<><Navbar /><GenreFilter /></>} />
             <Route path="/search/year" element={<><Navbar /><YearFilter /></>} />
+            <Route path="/tvshow" element={<><Navbar /><TVShowList /></>} />
+            <Route path="/tvshow/:id" element={<><Navbar /><ShowDetails /></>} />
+            <Route path="/person/popular" element={<><Navbar /><PeopleList /></>} />
 
             {/* 🔥 No Navbar on 404 */}
             <Route path="*" element={<NotFound />} />
