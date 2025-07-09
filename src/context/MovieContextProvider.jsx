@@ -1,9 +1,35 @@
-import React, { useState } from 'react'
-import MovieContext from './MovieContext'
-const MovieContextProvider = ({children}) => {
-  const [favorites, setFavorites] = useState([]);
-  const [watchlist, setWatchlist] = useState([]);
-  const [darkMode, setDarkMode] = useState(false);
+import React, { useState, useEffect } from 'react';
+import MovieContext from './MovieContext';
+
+const MovieContextProvider = ({ children }) => {
+  const [favorites, setFavorites] = useState(() => {
+    const stored = localStorage.getItem('favorites');
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  const [watchlist, setWatchlist] = useState(() => {
+    const stored = localStorage.getItem('watchlist');
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  const [darkMode, setDarkMode] = useState(() => {
+    const stored = localStorage.getItem('darkMode');
+    return stored ? JSON.parse(stored) : false;
+  });
+
+  // Save to localStorage on change
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  useEffect(() => {
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
+  }, [watchlist]);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+  }, [darkMode]);
+
   const toggleFavorite = (movie) => {
     setFavorites((prev) =>
       prev.some((m) => m.id === movie.id)
@@ -19,10 +45,21 @@ const MovieContextProvider = ({children}) => {
         : [...prev, movie]
     );
   };
-  return (
-    <MovieContext.Provider value= { {favorites, watchlist, toggleFavorite, toggleWatchlist,darkMode,setDarkMode} }>   {children}
-    </MovieContext.Provider>
-  )
-}
 
-export default MovieContextProvider
+  return (
+    <MovieContext.Provider
+      value={{
+        favorites,
+        watchlist,
+        toggleFavorite,
+        toggleWatchlist,
+        darkMode,
+        setDarkMode
+      }}
+    >
+      {children}
+    </MovieContext.Provider>
+  );
+};
+
+export default MovieContextProvider;
