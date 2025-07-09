@@ -1,6 +1,6 @@
 import { useState,useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import MovieContext from "../context/MovieContext"; // adjust path as needed
+// import MovieContext from "../context/MovieContext"; // adjust path as needed
 
 import {
   FaBookmark,
@@ -13,15 +13,15 @@ import {
 
 const TMDB_API_KEY = "a4574e2a6343d5ea405089950be10143";
 
-export default function Navbar({ setSearchResults }) {
+export default function Navbar({toggleDarkMode,darkMode}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const [showOverlay, setShowOverlay] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const {darkMode,setDarkMode} = useContext(MovieContext);
+
   const navigate = useNavigate();
   const closeSidebar = () => setIsOpen(false);
-  const toggleDarkMode = () => setDarkMode((prev) => !prev);
+  
   const handleSearchClick = () => setShowOverlay((prev) => !prev);
 
   const handleSearchKey = (e) => {
@@ -38,9 +38,7 @@ export default function Navbar({ setSearchResults }) {
   return (
     <>
       <nav
-        className={`${
-          darkMode ? "bg-black text-white" : "bg-[#1b0b0b] text-white"
-        } fixed top-0 w-full z-50 shadow-md`}
+        className={` ${darkMode? "text-[#1b0b0b]": "text-white"} fixed top-0 w-full z-50 shadow-md`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -72,10 +70,10 @@ export default function Navbar({ setSearchResults }) {
             </div>
 
             {/* Right Controls */}
-            <div className="flex flex-row items-center space-x-4">
+            <div className={`flex flex-row items-center space-x-4 ` }>
               {/* Search Input */}
               <div className="relative z-10">
-                <div className="p-4 bg-[#1b0b0b] z-20 flex flex-row">
+                <div className="p-4  z-20 flex flex-row">
                   <input
                     value={searchValue}
                     onClick={handleSearchClick}
@@ -102,7 +100,7 @@ export default function Navbar({ setSearchResults }) {
 
               {/* Bookmark */}
               <Link to="/mylist">
-                <FaBookmark className="text-white text-xl cursor-pointer" />
+                <FaBookmark className={`text-white text-xl cursor-pointer ${darkMode? "text-[#1b0b0b]": "text-white"}`} />
               </Link>
 
               {/* Avatar */}
@@ -114,7 +112,7 @@ export default function Navbar({ setSearchResults }) {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden">
+            <div className="md:hidden max-sm:mr-3">
               <button onClick={() => setIsOpen(true)} className="text-2xl">
                 <FaBars />
               </button>
@@ -123,11 +121,11 @@ export default function Navbar({ setSearchResults }) {
         </div>
       </nav>
 
-      <hr className="h-0.5 bg-gray-500 border-none" />
+      <hr className="h-0.5 max-md:mt-4 bg-gray-500 border-none" />
 
       {/* Search Overlay */}
       {showOverlay && (
-        <div className="inset-0 flex-row flex justify-center items-start pt-0 transition-all duration-300">
+        <div className="inset-0 max-sm:hidden flex-row flex justify-center items-start pt-0 transition-all duration-300">
           <div className="p-4 z-20 flex flex-row">
             <input
               value={searchValue}
